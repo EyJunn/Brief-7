@@ -1,22 +1,26 @@
 'use client'
+
 import {  registerUser } from '@/Services/auth'
 import { useRouter } from 'next/navigation'
 import React  from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ErrorMsg } from '../Error'
-import { AuthProps } from '@/Utils/types'
+import { registerProps } from '@/Utils/types'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from "yup"
+import { schema } from '@/validation/validator'
 
 export const RegisterForm = () => {
   const { push } = useRouter()
 
- const {register, handleSubmit, watch, formState:{errors}}=useForm<AuthProps>()
+ const {register, handleSubmit, watch, formState:{errors}}=useForm<registerProps>({mode:"onChange", resolver:yupResolver(schema)})
 
-  const onSubmit: SubmitHandler<AuthProps> = (data) =>
+  const onSubmit: SubmitHandler<registerProps> = (data) =>
     registerUser(data).then((res) => {
 if (res.status === 201){
   if (typeof window !== 'undefined'){
     window.localStorage.setItem('token', res.data.access_token)
-    push('/login')
+    push('/')
   }
 }
     }).catch((e)=> console.log(e))
@@ -44,10 +48,10 @@ if (res.status === 201){
                 type="email"
                 autoComplete="email"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-                {...register('email', { required: true })}
+                {...register('email')}
               />
             </div>
-            {errors.email  && <ErrorMsg />}
+            {errors.email  && <ErrorMsg message= {errors.email.message}/>}
           </div>
           <div>
             <div className="flex items-center justify-between">
@@ -63,10 +67,10 @@ if (res.status === 201){
                 id="firstName"
                 type="text"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-                {...register('firstName', { required: true })}
+                {...register('firstName')}
               />
             </div>
-            {errors.firstName  && <ErrorMsg />}
+            {errors.firstName  && <ErrorMsg message={errors.firstName.message} />}
           </div>
           <div>
             <div className="flex items-center justify-between">
@@ -83,9 +87,69 @@ if (res.status === 201){
                 type="text"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
                 {...register('lastName', { required: true })}
-              />
+              /> 
             </div>
-            {errors.lastName  && <ErrorMsg />}
+            {errors.lastName  && <ErrorMsg message={errors.lastName.message}/>}
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="age"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Age
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                id="age"
+                type="number"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+                {...register('age', { required: true })}
+              /> 
+            </div>
+            {errors.age  && <ErrorMsg message={errors.age.message}/>}
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="pseudo"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Pseudo
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                id="pseudo"
+                type="text"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+                {...register('pseudo', { required: true })}
+              /> 
+            </div>
+            {errors.pseudo  && <ErrorMsg message={errors.pseudo.message}/>}
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="city"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                City
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                id="city"
+                type="text"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
+                {...register('city', { required: true })}
+              /> 
+            </div>
+            {errors.city  && <ErrorMsg message={errors.city.message}/>}
           </div>
 
           <div>
@@ -103,12 +167,30 @@ if (res.status === 201){
                 type="password"
                 autoComplete="current-password"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3"
-                {...register('password', { required: true })}
+                {...register('password')}
               />
             </div>
-            {errors.password  && <ErrorMsg />}
+            {errors.password  && <ErrorMsg message={errors.password.message}/>}
           </div>
           
+           <div>
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="promoCode"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Promo Code
+              </label>
+            </div>
+            <div className="mt-2">
+              <input
+                id="promoCode"
+                type="text"
+                autoComplete="current-promoCode"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3 mb-4"
+              />
+           </div> 
+
 
           <div>
             <button
@@ -118,7 +200,21 @@ if (res.status === 201){
               Sign up
             </button>
           </div>
-        </form>
+        </div>
+       </form>
+        <div className="flex items-center justify-center space-x-2">
+              <span className="h-px w-16 bg-gray-300"></span>
+              <span className="text-red-500 font-normal">OR</span>
+              <span className="h-px w-16 bg-gray-300"></span>
+         </div>
+          <div>
+              <a
+                className="w-full flex justify-center bg-yellow-400 bg-opacity-50 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                href="/Register"
+              >
+                Log to your account
+              </a>
+          </div>
       </div>
     </div>
   )

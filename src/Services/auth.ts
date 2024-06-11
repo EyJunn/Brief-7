@@ -1,11 +1,13 @@
-import { AuthProps } from '@/Utils/types'
+import { loginProps, registerProps } from '@/Utils/types'
 import axios from 'axios'
-export async function registerUser(authProps: AuthProps) {
+
+
+export async function registerUser(registerProps: registerProps) {
   let url = `${process.env.NEXT_PUBLIC_API_URL}auth/signup`
 
   let axiosConfig = {
     headers: {
-      'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+      'content-type': 'application/json;charset=utf-8',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     },
@@ -14,13 +16,14 @@ export async function registerUser(authProps: AuthProps) {
     .post(
       url,
       {
-        firstName: authProps.firstName,
-        lastName: authProps.lastName,
-        pseudo: authProps.pseudo,
-        city: authProps.city,
-        email: authProps.email,
-        password: authProps.password,
-        promoCode: authProps.promoCode,
+        firstName: registerProps.firstName,
+        lastName: registerProps.lastName,
+        pseudo: registerProps.pseudo,
+        age: registerProps.age||20,
+        city: registerProps.city,
+        email: registerProps.email,
+        password: registerProps.password,
+        promoCode: registerProps.promoCode,
       },
       axiosConfig
     )
@@ -31,12 +34,12 @@ export async function registerUser(authProps: AuthProps) {
       throw new Error(e)
     })
 }
-export async function loginUser(authProps: AuthProps) {
+export async function loginUser(loginProps: loginProps) {
   let url = `${process.env.NEXT_PUBLIC_API_URL}auth/signin`
 
   let axiosConfig = {
     headers: {
-      'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+      'content-type': 'application/json;charset=utf-8',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     },
@@ -45,8 +48,8 @@ export async function loginUser(authProps: AuthProps) {
     .post(
       url,
       {
-        email: authProps.email,
-        password: authProps.password,
+        email: loginProps.email,
+        password: loginProps.password,
       },
       axiosConfig
     )
@@ -57,3 +60,4 @@ export async function loginUser(authProps: AuthProps) {
       throw new Error(e)
     })
 }
+

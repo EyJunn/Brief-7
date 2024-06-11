@@ -4,28 +4,27 @@ import { useRouter } from 'next/navigation'
 import React  from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ErrorMsg } from '../Error'
-import { AuthProps } from '@/Utils/types'
-import Image from 'next/image'
+import { loginProps } from '@/Utils/types'
 
 export const LoginForm = () => {
   const { push } = useRouter()
 
- const {register, handleSubmit, watch, formState:{errors}}=useForm<AuthProps>()
+ const {register, handleSubmit, watch, formState:{errors}}=useForm<loginProps>({ mode: "onChange"})
 
-  const onSubmit: SubmitHandler<AuthProps> = (data) =>
+  const onSubmit: SubmitHandler<loginProps> = (data) =>
     loginUser(data).then((res) => {
-if (res.status === 201){
+if (res.status === 200){
   if (typeof window !== 'undefined'){
     window.localStorage.setItem('token', res.data.access_token)
-    push('/login')
+    push('/Home')
   }
 }
     }).catch((e)=> console.log(e))
 
   return (
-    <div className="flex flex-wrap justify-evenly items-center h-full bg-green-200">
+    <div className="flex flex-wrap h-screen justify-evenly items-center bg-green-200">
         
-           <Image src="https://images.unsplash.com/photo-1640826514546-7d2eab70a4e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNyeXB0b2N1cnJlbmN5fGVufDB8fDB8fHww" width={800} height={400} alt={'unsplash image on cryptocurrency'}/>
+           <img src="https://images.unsplash.com/photo-1640826514546-7d2eab70a4e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNyeXB0b2N1cnJlbmN5fGVufDB8fDB8fHww" className='h-screen w-1/2 bg-cover ' alt={'unsplash image on cryptocurrency'}/>
    
       <div className="sm:mx-auto sm:w-full sm:max-w-sm absolute top-12 right-96">
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -51,7 +50,7 @@ if (res.status === 201){
                 {...register('email', { required: true })}
               />
             </div>
-            {errors.email  && <ErrorMsg />}
+            {errors.email  && <ErrorMsg message={errors.email.message} />}
           </div>
 
           <div>
@@ -72,8 +71,10 @@ if (res.status === 201){
                 {...register('password', { required: true })}
               />
             </div>
-            {errors.password  && <ErrorMsg />}
+            {errors.password  && <ErrorMsg message={errors.password.message} />}
           </div>
+
+          { errors?.root && <p className="text-red-500 text-xs italic">{errors.root?.message}</p>}
           
 
           <div>
@@ -85,6 +86,19 @@ if (res.status === 201){
                </button>
                  </div>
              </form>
+              <div className="flex items-center justify-center space-x-2">
+              <span className="h-px w-16 bg-gray-300"></span>
+              <span className="text-white-500 font-normal">OR</span>
+              <span className="h-px w-16 bg-gray-300"></span>
+            </div>
+            <div>
+              <a
+                className="w-full flex justify-center bg-yellow-400 bg-opacity-50 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                href="/Register"
+              >
+                Create your account
+              </a>
+            </div>
          </div>
     </div>
   )
