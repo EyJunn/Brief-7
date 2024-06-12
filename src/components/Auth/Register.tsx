@@ -5,10 +5,11 @@ import { useRouter } from 'next/navigation'
 import React  from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ErrorMsg } from '../Error'
-import { registerProps } from '@/Utils/types'
+
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import { schema } from '@/validation/validator'
+import { registerProps } from '@/Utils/types'
 
 export const RegisterForm = () => {
   const { push } = useRouter()

@@ -18,7 +18,7 @@ const Header = () => {
           </a>
         </li>
         <li className="p-5 xl:p-8">
-          <a href="">
+          <a href="/Home/Profile">
             <span>Profile</span>
           </a>
         </li>

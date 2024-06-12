@@ -1,7 +1,7 @@
-import axios from "axios"
+import axios from "axios";
 
-export async function HomePage() {
-  let url = `${process.env.NEXT_PUBLIC_API_URL}crypto/all`
+export default function getMyAsset() {
+  let url = `${process.env.NEXT_PUBLIC_API_URL}user/my-assets`  
   let jwt = window.localStorage.getItem("token")
 
   let axiosConfig = {
@@ -21,6 +21,8 @@ export async function HomePage() {
       return res.data
     })
     .catch((e) => {
+        console.log(e)
       throw new Error(e)
     })
+
 }
