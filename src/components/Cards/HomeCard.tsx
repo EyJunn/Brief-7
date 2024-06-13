@@ -1,6 +1,4 @@
-'use client'
 
-import { HomePage } from '@/Services/homepage'
 import { homeCardProps } from '@/Utils/types'
 
 

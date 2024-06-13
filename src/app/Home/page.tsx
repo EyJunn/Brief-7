@@ -1,7 +1,8 @@
 'use client'
 
-import { HomePage } from '@/Services/homepage'
-import { dataCryptoProps, homeCardProps } from '@/Utils/types'
+
+import { getAllCryptos } from '@/Services/crypto'
+import { dataCryptoProps } from '@/Utils/types'
 import HomeCard from '@/components/Cards/HomeCard'
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
@@ -12,7 +13,7 @@ const home = () => {
   const [cryptos, setCryptos] = useState<dataCryptoProps[]>([])
 
       useEffect(()=>{
-      HomePage().then((res)=>{
+      getAllCryptos().then((res)=>{
       setCryptos(res)})
 
       
@@ -32,6 +33,7 @@ const home = () => {
                  
             
             </div>
+            
         
          </main>
         <Footer />

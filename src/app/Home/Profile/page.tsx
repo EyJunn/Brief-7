@@ -7,7 +7,7 @@ import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
 import React, { useEffect, useState } from 'react'
 
-const profile = () => {
+const page = () => {
      const [asset, setAsset] = useState<assetsProps>()
 
       useEffect(()=>{
@@ -16,14 +16,14 @@ const profile = () => {
 
       
       },[])
-
+console.log(asset)
   return (
     <div>
         <Header />
          <main className="flex h-screen justify-center items-center p-24">
             <div className='h-auto w-auto'>
         {asset && 
-            <ProfileCard  firstName={asset.firstName} lastName={asset.lastName} dollarAvailable={asset.dollarAvailable} pseudo={asset.pseudo} UserHasCrypto={[]}  /> 
+            <ProfileCard  firstName={asset.firstName} lastName={asset.lastName} dollarAvailables={asset.dollarAvailables.toFixed(2)} pseudo={asset.pseudo} age={asset.age} /> 
         
         }
         </div>
@@ -33,4 +33,4 @@ const profile = () => {
   )
 }
 
-export default profile
+export default page

@@ -37,7 +37,32 @@ export type dataCryptoProps={
 export type assetsProps ={
   firstName: string
   lastName: string
-  dollarAvailable: number
+  dollarAvailables: number
   pseudo: string
-  UserHasCrypto: []
+  age: number
+  UserHasCrypto?: UserCryptoProps[]
+}
+
+export type OfferProps={
+   id: string
+  User: {
+    pseudo: string
+  }
+  amount: number
+  created_at: string
+  id_user: string
+  Crypto: dataCryptoProps
+}
+
+export type UserCryptoProps={
+  Crypto: {
+    created_at: string
+    id: string
+    image: string
+    name: string
+    quantity: number
+    updated_at: string
+    value: number
+  }
+  amount: number
 }
