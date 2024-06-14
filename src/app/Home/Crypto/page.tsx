@@ -15,7 +15,7 @@ const page = () => {
         getAllCryptos().then((res)=> setCryptosList(res)).catch((e)=>{console.log(e)})
     },[])
   return (
-    <div>
+    <div className='bg-gradient-to-tr from-violet-500 to-orange-300'>
         <Header />
             <main className="flex min-h-screen flex-col items-center justify-between p-24">
                 <div className="flex flex-wrap items-center">

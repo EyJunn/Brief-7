@@ -2,6 +2,7 @@ import { OfferProps } from '@/Utils/types'
 import React, { Dispatch, SetStateAction } from 'react'
 import { Cryptocard } from './CryptoCard'
 import { buyOffer } from '@/Services/Offer'
+import { toast } from 'react-toastify'
 
 const OfferCard = ({offer, setIsReload}:{offer: OfferProps, setIsReload: Dispatch<SetStateAction<boolean>>}) => {
 
@@ -9,15 +10,15 @@ const OfferCard = ({offer, setIsReload}:{offer: OfferProps, setIsReload: Dispatc
             buyOffer(offerId).then((res)=>{
                 if(res.data) {
                     if (res.status === 204){
-                        alert("Items already sold")
+                        toast.error("Items alreadys sold!")
                     }
                     if (res.status === 201){
-                        alert("Succes")
+                        toast.success("Congratualtions, you just buy it!")
                         setIsReload(true)
                     }
                 }
                 
-            }).catch((e)=>alert("Error"))
+            }).catch((e)=>toast.error("Error"))
         }
 
   return (

@@ -12,7 +12,7 @@ const HomeCard = ({image, name, quantity, value}: homeCardProps) => {
              <img
                src={image}
                alt="image unsplash"
-               className="h-full w-full object-cover"
+               className="h-96 w-full object-cover bg-center "
              />
            </div>
            <div className="p-6">

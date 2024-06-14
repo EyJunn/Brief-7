@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { ErrorMsg } from '../Error'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from "yup"
+import  yup from "yup"
 import { schema } from '@/validation/validator'
 import { registerProps } from '@/Utils/types'
 
@@ -21,13 +21,14 @@ export const RegisterForm = () => {
 if (res.status === 201){
   if (typeof window !== 'undefined'){
     window.localStorage.setItem('token', res.data.access_token)
-    push('/')
+    window.localStorage.setItem('role', res.data.user.Role.name)
+    push('/Home')
   }
 }
     }).catch((e)=> console.log(e))
 
   return (
-    <div className="flex flex-col justify-center h-screen bg-white">
+    <div className="flex flex-col justify-center h-screen bg-inherit">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign up to your account
@@ -205,13 +206,13 @@ if (res.status === 201){
        </form>
         <div className="flex items-center justify-center space-x-2">
               <span className="h-px w-16 bg-gray-300"></span>
-              <span className="text-red-500 font-normal">OR</span>
+              <span className=" font-normal">OR</span>
               <span className="h-px w-16 bg-gray-300"></span>
          </div>
           <div>
               <a
-                className="w-full flex justify-center bg-yellow-400 bg-opacity-50 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                href="/Register"
+                className="w-full flex justify-center bg-black bg-opacity-50 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
+                href="/login"
               >
                 Log to your account
               </a>

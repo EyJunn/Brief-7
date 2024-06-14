@@ -3,6 +3,7 @@ import { buyCrypto } from '@/Services/crypto'
 import { dataCryptoProps } from '@/Utils/types'
 import { Box, Modal } from '@mui/material'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export const BuyCryptoModal = ({ crypto, isBuyVisible }: {crypto :dataCryptoProps, isBuyVisible: boolean}) => {
   const style = {
@@ -24,7 +25,7 @@ export const BuyCryptoModal = ({ crypto, isBuyVisible }: {crypto :dataCryptoProp
   function HandleCrypoBuy() {
     buyCrypto(crypto.id, amount)
       .then((res) => {
-        alert('success')
+        toast.success("Congratulations, you just buy it !")
         handleClose()
       })
       .catch((e) => console.log(e))

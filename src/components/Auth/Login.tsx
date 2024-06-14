@@ -5,6 +5,7 @@ import React  from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ErrorMsg } from '../Error'
 import { loginProps } from '@/Utils/types'
+import { toast } from 'react-toastify'
 
 
 export const LoginForm = () => {
@@ -16,24 +17,24 @@ export const LoginForm = () => {
     loginUser(data).then((res) => {
 if (res.status === 200){
   if (typeof window !== 'undefined'){
+    toast.success("You're log in")
     window.localStorage.setItem('token', res.data.access_token)
+    window.localStorage.setItem('role', res.data.user.Role.name)
     push('/Home')
   }
 }
     }).catch((e)=> console.log(e))
 
   return (
-    <div className="flex flex-wrap h-screen justify-evenly items-center bg-green-200">
-        
-           <img src="https://images.unsplash.com/photo-1640826514546-7d2eab70a4e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNyeXB0b2N1cnJlbmN5fGVufDB8fDB8fHww" className='h-screen w-1/2 bg-cover ' alt={'unsplash image on cryptocurrency'}/>
+    <div className="flex flex-col h-screen justify-evenly items-center bg-gradient-to-tr from-violet-500 to-orange-300 ">
    
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm absolute top-12 right-96">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
+        <h2 className="mt-5 text-center text-2xl font-bold leading-9 text-gray-900 ">
           Sign in to your account
         </h2>
       </div>
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
             <label
@@ -95,7 +96,7 @@ if (res.status === 200){
             <div>
               <a
                 className="w-full flex justify-center bg-yellow-400 bg-opacity-50 text-gray-100 p-4 rounded-full tracking-wide font-semibold focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300"
-                href="/Register"
+                href="/register"
               >
                 Create your account
               </a>

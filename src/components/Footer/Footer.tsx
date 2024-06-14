@@ -1,10 +1,13 @@
 import React from 'react'
+import '../Footer/Footer.css'
+
+
 
 const Footer = () => {
   return (
 
-<footer className="bg-white bg-opacity-5 text-white shadow-lg hidden md:block">
-  <div className="container mx-auto flex items-center h-24">
+<footer className="bg-white bg-opacity-5 text-white md:block shad">
+  <div className="container mx-auto flex items-center h-24 ">
     <nav className="contents font-semibold text-base lg:text-lg">
       <ul className="mx-auto flex items-center">
         <li className="p-5 xl:p-8 active">

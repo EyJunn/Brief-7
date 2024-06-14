@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Header = () => {
+
   return (
 
 <header className="bg-white bg-opacity-5 text-white shadow-lg hidden md:block">
@@ -12,11 +13,7 @@ const Header = () => {
             <span>Home</span>
           </a>
         </li>
-        <li className="p-5 xl:p-8">
-          <a href="">
-            <span></span>
-          </a>
-        </li>
+        
         <li className="p-5 xl:p-8">
           <a href="/Home/Profile">
             <span>Profile</span>

@@ -16,14 +16,14 @@ const page = () => {
 
       
       },[])
-console.log(asset)
+
   return (
-    <div>
+    <div className='bg-gradient-to-tr from-violet-500 to-orange-300'>
         <Header />
          <main className="flex h-screen justify-center items-center p-24">
             <div className='h-auto w-auto'>
         {asset && 
-            <ProfileCard  firstName={asset.firstName} lastName={asset.lastName} dollarAvailables={asset.dollarAvailables.toFixed(2)} pseudo={asset.pseudo} age={asset.age} /> 
+            <ProfileCard  firstName={asset.firstName} lastName={asset.lastName} dollarAvailables={asset.dollarAvailables} pseudo={asset.pseudo} age={asset.age} /> 
         
         }
         </div>

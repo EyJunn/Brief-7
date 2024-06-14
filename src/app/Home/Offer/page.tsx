@@ -16,7 +16,7 @@ const page = () => {
     getAllOffer()
       .then((res) => {
         setOfferList(res)
-        setIsReload(false)
+        setIsReload(true)
       })
       .catch((e) => {
         setIsReload(false)
@@ -24,7 +24,7 @@ const page = () => {
       })
   }, [isReload])
   return (
-    <div>
+    <div className='bg-gradient-to-tr from-violet-500 to-orange-300'>
         <Header />
             <main className="flex min-h-screen flex-col items-center justify-between p-24">
                 <div className="flex flex-wrap items-center">

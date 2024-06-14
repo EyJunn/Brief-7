@@ -66,12 +66,12 @@ export async function searchCrypto(name: string) {
     },
   }
   return axios
-    .post(
+    .get(
       url,
       axiosConfig
     )
     .then((res) => {
-      return res
+      return res.data
     })
     .catch((e) => {
       throw new Error(e)

@@ -9,7 +9,7 @@ export const Cryptocard = ({ crypto, isBuyVisible }: { crypto: dataCryptoProps, 
       <img
         src={crypto.image}
         alt={crypto.name}
-        className="w-full h-48 object-cover"
+        className="w-full h-48  object-cover"
       />
       <p>{crypto.name}</p>
 

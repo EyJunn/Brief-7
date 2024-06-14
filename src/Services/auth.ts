@@ -38,6 +38,8 @@ export async function registerUser(registerProps: registerProps) {
 export async function loginUser(loginProps: loginProps) {
   let url = `${process.env.NEXT_PUBLIC_API_URL}auth/signin`
 
+
+
   let axiosConfig = {
     headers: {
       'content-type': 'application/json;charset=utf-8',
