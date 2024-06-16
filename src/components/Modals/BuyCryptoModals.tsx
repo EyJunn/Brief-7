@@ -5,7 +5,7 @@ import { Box, Modal } from '@mui/material'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
-export const BuyCryptoModal = ({ crypto, isBuyVisible }: {crypto :dataCryptoProps, isBuyVisible: boolean}) => {
+export const BuyCryptoModal = ({ crypto, isBuyVisible }: { crypto: dataCryptoProps, isBuyVisible: boolean }) => {
   const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -33,14 +33,14 @@ export const BuyCryptoModal = ({ crypto, isBuyVisible }: {crypto :dataCryptoProp
 
   return (
     <div>
-        {isBuyVisible && (
-      <button
-        onClick={handleOpen}
-        className="bg-white text-center rounded-lg text-indigo-600 w-20 p-1 text-sm mt-1"
-      >
-        Buy{' '}
-      </button>
-  )}
+      {isBuyVisible && (
+        <button
+          onClick={handleOpen}
+          className="bg-white text-center rounded-lg text-indigo-600 w-20 p-1 text-sm mt-1"
+        >
+          Buy{' '}
+        </button>
+      )}
       <Modal
         open={open}
         onClose={handleClose}
