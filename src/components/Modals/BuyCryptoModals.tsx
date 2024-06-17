@@ -1,4 +1,4 @@
-
+'use client'
 import { buyCrypto } from '@/Services/crypto'
 import { dataCryptoProps } from '@/Utils/types'
 import { Box, Modal } from '@mui/material'
