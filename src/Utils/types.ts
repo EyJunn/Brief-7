@@ -67,7 +67,9 @@ export type UserCryptoProps={
   amount: number
 }
 
-export type createPromoCodeProps ={
+export type createCryptoProps ={
   name: string
   value: number
+  quantity: number
+  image: string
 }

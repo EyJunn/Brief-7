@@ -1,7 +1,6 @@
-import { createPromoCodeProps } from "@/Utils/types"
 import axios from "axios"
 
-export async function createPromoCode(createPromoCodeProps : createPromoCodeProps) {
+export async function createPromoCode(name: string, value: number) {
   let url = `${process.env.NEXT_PUBLIC_API_URL}promoCode/create`
 
   let axiosConfig = {
@@ -16,8 +15,8 @@ export async function createPromoCode(createPromoCodeProps : createPromoCodeProp
     .post(
       url,
       {
-        name: createPromoCodeProps.name,
-        value: createPromoCodeProps.value
+        name: name,
+        value: value
       },
       axiosConfig
     )

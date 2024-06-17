@@ -1,19 +1,25 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ButtonAdmin = ({content }: { content: string }) => {
-    let role = window.localStorage.getItem('role')
+    const role = window.localStorage.getItem('role')
     const [buttonVisible, setButtonVisible] = useState<boolean>(false)
-
+   
 
   function VisibleButton() {
     if(role === "admin"){
       setButtonVisible(true)
     }
   }
+
+  useEffect(()=>{
+    VisibleButton()
+  },[])
+
   return (
     <div>
-        {buttonVisible && <button>{content}</button>}
+      {buttonVisible && <button className='border border-white rounded-full font-bold px-8 py-2' onClick={}
+    >{content}</button>}
     </div>
   )
 }

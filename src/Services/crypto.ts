@@ -1,3 +1,4 @@
+import { createCryptoProps } from "@/Utils/types"
 import axios from "axios"
 
 export async function getAllCryptos() {
@@ -68,6 +69,35 @@ export async function searchCrypto(name: string) {
   return axios
     .get(
       url,
+      axiosConfig
+    )
+    .then((res) => {
+      return res.data
+    })
+    .catch((e) => {
+      throw new Error(e)
+    })
+}
+
+export async function CryptoCreate({name, value, quantity, image}: createCryptoProps){
+   let url = `${process.env.NEXT_PUBLIC_API_URL}crypto/create`
+
+   let axiosConfig = {
+    headers: {
+      'content-type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  }
+  return axios
+    .post(
+      url,
+      {name: name,
+        value: value,
+        quantity: quantity,
+        image: image,
+      },
       axiosConfig
     )
     .then((res) => {
