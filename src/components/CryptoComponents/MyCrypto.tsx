@@ -36,7 +36,7 @@ export const MyCrytpo = () => {
                 </h2>
 
                 <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
-                  In my wallet: {user.amount}
+                   Wallet: {user.amount}
                 </p>
                 <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
                   Value of the currency: {user.Crypto.value.toFixed(2)}

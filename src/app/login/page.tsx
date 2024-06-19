@@ -1,5 +1,4 @@
 import { LoginForm } from '@/components/Auth/Login'
-import { RegisterForm } from '@/components/Auth/Register'
 import React from 'react'
 
 function login() {

@@ -15,7 +15,7 @@ export const Search = ({setCryptos}: any) => {
   
   return (
     <div>
-      <div className="w-full mx-auto flex items-center bg-white justify-between my-6 rounded-md">
+      <div className="w-96 mx-auto flex items-center bg-white justify-between my-6 rounded-md">
         <input
           type="text"
           className="w-full h-10 bg-white rounded-md indent-5 text-black"
