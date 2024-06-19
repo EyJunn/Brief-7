@@ -8,15 +8,15 @@ const OfferCard = ({offer, setIsReload}:{offer: OfferProps, setIsReload: Dispatc
 
         function handleBuyOffer(offerId:string){
             buyOffer(offerId).then((res)=>{
-                if(res.data) {
+                setIsReload(true)
+                if (res.status === 201){
+                        toast.success("Congratulations, you just buy it!")
+                    }
                     if (res.status === 204){
                         toast.error("Items alreadys sold!")
                     }
-                    if (res.status === 201){
-                        toast.success("Congratualtions, you just buy it!")
-                        setIsReload(true)
-                    }
-                }
+                    
+                
                 
             }).catch((e)=>toast.error("Error"))
         }

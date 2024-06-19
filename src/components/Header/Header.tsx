@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PromoCodeModal from '../Modals/PromoCodeModal'
 import CreateCyrptoModal from '../Modals/CreateCryptoModal'
 
@@ -44,7 +44,7 @@ const Header = () => {
         <button className="border border-white rounded-full font-bold px-8 py-2" onClick={() => {
           window.localStorage.clear();
           setTimeout(() => {
-            window.location.href = "/register";
+            window.location.href = "/";
           }, 1000);
         }}>Log out</button>
       </div>

@@ -37,7 +37,7 @@ const CreateCyrptoModal = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box className=' bg-black w-72 '>
+        <Box className=' bg-gradient-to-tr from-violet-500 to-orange-300 w-72'>
             <input
               type="text"
               onChange={(e) => {

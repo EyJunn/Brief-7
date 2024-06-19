@@ -3,6 +3,8 @@
 import getMyAsset from "@/Services/Users";
 import { assetsProps } from "@/Utils/types";
 import { useEffect, useState } from "react";
+import CreateCyrptoModal from "../Modals/CreateCryptoModal";
+import CreateOfferModal from "../Modals/CreateOfferModal";
 
 export const MyCrytpo = () => {
   const [userCrypto, setUserCrypto] = useState<assetsProps>()
@@ -32,6 +34,7 @@ export const MyCrytpo = () => {
                 <h2 className="mb-4 block font-sans text-base font-semibold uppercase leading-relaxed tracking-normal text-pink-500 antialiased">
                   {user.Crypto.name}
                 </h2>
+
                 <p className="mb-8 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
                   In my wallet: {user.amount}
                 </p>
@@ -39,6 +42,7 @@ export const MyCrytpo = () => {
                   Value of the currency: {user.Crypto.value.toFixed(2)}
                 </p>
               </div>
+              <CreateOfferModal id={user.Crypto.id} />
             </div>
           </div>
         )

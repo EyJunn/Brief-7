@@ -73,3 +73,8 @@ export type createCryptoProps ={
   quantity: number
   image: string
 }
+
+export type createOfferProps ={
+  id: string
+  amount: number
+}

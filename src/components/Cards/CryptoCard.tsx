@@ -3,7 +3,7 @@ import React from 'react'
 import { BuyCryptoModal } from '../Modals/BuyCryptoModals'
 
 
-export const Cryptocard = ({ crypto, isBuyVisible }: { crypto: dataCryptoProps, isBuyVisible: boolean }) => {
+export const Cryptocard = ({ crypto, isBuyVisible }: { crypto: dataCryptoProps, isBuyVisible: boolean}) => {
   return (
     <div>
       <img
