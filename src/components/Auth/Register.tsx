@@ -19,12 +19,8 @@ export const RegisterForm = () => {
   const onSubmit: SubmitHandler<registerProps> = (data) =>
     registerUser(data).then((res) => {
       if (res.status === 201) {
-        if (typeof window !== 'undefined') {
-          toast.success("Welcome on Keepto Dream")
-          window.localStorage.setItem('token', res.data.access_token)
-          window.localStorage.setItem('role', res.data.user.Role.name)
-          push('/Home')
-        }
+        toast.success("Welcome on Keepto Dream")
+        push('/login')
       }
     }).catch((e) => console.log(e))
 
